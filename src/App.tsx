@@ -8,6 +8,7 @@ import MainLayout from './comps/MainLayout'
 import CountryDetailPage from './comps/CountryDetailPage'
 import { endLoading } from './features/loadingSlice'
 import CountriesListPage from './comps/CountriesListPage'
+import ErrorPage from './comps/ErrorPage'
 
 // - Blue 900 (Dark Mode Elements): hsl(209, 23%, 22%)
 // - Blue 950 (Dark Mode Background): hsl(207, 26%, 17%)
@@ -44,8 +45,9 @@ export default function App() {
       <Routes>
         <Route path='/' element={<MainLayout isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />}>
           <Route index element={<CountriesListPage isDarkMode={isDarkMode} />} />
-          <Route path='/:countryName' element={<CountryDetailPage isDarkMode={isDarkMode} />} />
+          <Route path='/country/:countryName' element={<CountryDetailPage isDarkMode={isDarkMode} />} />
         </Route>
+        <Route path='*' element={<ErrorPage />}></Route>
       </Routes>
     </>
   )

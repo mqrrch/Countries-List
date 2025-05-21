@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>404 - Page not found</title>
+        <script>
+            const path = window.location.pathname;
+            const isGHPage = path.startsWith('/Countries-List/');
+            const redirectPath = isGHPage ? path.replace('/Countries-List', '') : path;
+
+            window.history.replaceState({}, '', '/');
+            window.location.replace(redirectPath || '/');
+        </script>
+    </head>
+    <body>
+        <h1>Loading..</h1>
+        <p><a href="/">Click here</a> if you are not redirected</p>
+    </body>
+</html>

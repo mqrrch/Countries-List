@@ -6,4 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   base: '/Countries-List/',
   plugins: [react(), tailwindcss()],
+  build: {
+    outDir: 'docs',
+  },
 })

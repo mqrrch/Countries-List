@@ -30,7 +30,7 @@ export default function Countries({ isDarkMode }: Props){
                 <figure 
                     key={index}
                     className={`${isDarkMode ? 'bg-[hsl(209,23%,22%)]' : 'bg-white'} pb-5 rounded-xl overflow-hidden cursor-pointer`}
-                    onClick={() => navigate(`/${country.name.toLowerCase()}`)}
+                    onClick={() => navigate(`country/${country.name.toLowerCase()}`)}
                 >
                     <img 
                         src={country.flag}

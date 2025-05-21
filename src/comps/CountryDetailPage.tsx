@@ -3,7 +3,6 @@ import LeftArrowSvg from "../assets/LeftArrowSvg";
 import { useReduxSelector } from "../hooks/useReduxSelector";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { endLoading, startLoading } from "../features/loadingSlice";
 import { setFilter, setSearch } from "../features/searchFilter";
 
 interface Props{
@@ -13,17 +12,15 @@ interface Props{
 export default function CountryDetailPage({ isDarkMode }: Props){
     const fullData = useReduxSelector(state => state.data.data);
     const { countryName } = useParams();
-    const data = fullData.find((country) => country.name.toLowerCase() === String(countryName));
+    const data = fullData.find((country) => country.name.toLowerCase() === String(countryName).toLowerCase());
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
     useEffect(() => {
         if (!data){
-            dispatch(startLoading());
-        } else{
-            dispatch(endLoading());
+            navigate('/404', { replace: true })
         }
-    }, [data, dispatch])
+    }, [data, navigate])
 
     function findCountryFromBorder(border: string){
         const countryData = fullData.find((country) => country.alpha3Code === border);
